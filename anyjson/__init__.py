@@ -76,7 +76,7 @@ class _JsonImplementation(object):
         TypeError if the object could not be serialized."""
         try:
             return self._encode(data)
-        except self._encode_error, exc:
+        except self._encode_error as exc:
             raise TypeError, TypeError(*exc.args), sys.exc_info()[2]
     serialize = dumps
 
@@ -88,7 +88,7 @@ class _JsonImplementation(object):
             if self._filedecode and not isinstance(s, basestring):
                 return self._filedecode(StringIO(s))
             return self._decode(s)
-        except self._decode_error, exc:
+        except self._decode_error as exc:
             raise ValueError, ValueError(*exc.args), sys.exc_info()[2]
     deserialize = loads
 
